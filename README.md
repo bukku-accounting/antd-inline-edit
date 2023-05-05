@@ -10,7 +10,6 @@ An inline edit displays a custom input component that switches between reading a
 The Antd Inline Edit component is a React component that provides an inline editing interface. 
 
 
-
 ## Installation
 
 You can install the Antd Inline Edit component using npm:
@@ -29,20 +28,28 @@ yarn add antd-inline-edit
 To use the Antd Inline Edit component in your project, you can import it like any other React component:
 
 ```jsx
+import React, { useState } from 'react';
+import { Button } from 'antd';
 import { InlineEdit } from 'antd-inline-edit';
 
-function MyComponent() {
-  const [value, setValue] = useState('initial value');
+export default function MyComponent() {
+  const valueWhenUndo = 'John Doe'
+  const [name, setName] = useState(valueWhenUndo);
 
-  const handleSave = (newValue) => {
-    setValue(newValue);
+  const handleSave = (value) => {
+    setName(value);
   };
 
   return (
+    <div>
+      <h1>Profile</h1>
     <InlineEdit 
-      value={value} 
-      onSave={handleSave} 
-    />
+        onSave={handleSave}
+        initialValue={name}
+        defaultValue={valueWhenUndo}
+        inputMaxLength={50}
+      />
+    </div>
   );
 }
 ```
