@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Preview } from '@storybook/addon-docs/blocks';
+import { Source } from '@storybook/addon-docs/blocks';
+// import { Props } from '@storybook/addon-docs/blocks';
+// import { Description } from '@storybook/addon-docs/blocks';
+import { Stories } from '@storybook/addon-docs/blocks';
+
+<Meta title="Antd Inline Edit" />
+
+# Antd Inline Edit
+
+Antd Inline Edit is a customizable React component that allows users to edit text in-place. It is built using the Ant Design UI library and can be easily integrated into any React project.
+
+## Features
+
+- Edit text in-place
+- Customizable display rendering
+- Callback function on save
+
+## Installation
+
+To install Antd Inline Edit in your project, simply run:
+
+```
+npm install antd-inline-edit
+```
+
+## Usage
+
+To use Antd Inline Edit in your React project, simply import it and add it to your component:
+
+```jsx
+import React from 'react';
+import InlineEdit from 'antd-inline-edit';
+
+function MyComponent() {
+  const handleSave = (value) => {
+    console.log('Saved value:', value);
+  };
+
+  return (
+    <InlineEdit
+      initialValue="Click to edit"
+      defaultValue="Default value"
+      inputMaxLength={100}
+      onSave={handleSave}
+      displayRenderer={(value) => (
+        <div style={{ fontWeight: 'bold' }}>{value}</div>
+      )}
+    />
+  );
+}
+```
+
+
+## Examples
+
+Check out some examples of Antd Inline Edit in action
+
+<Stories include="Basic Usage, Custom Renderer, Validation, and more" />
+
+## Source Code
+
+You can view the source code for Antd Inline Edit on [GitHub](https://github.com/erictehyc/antd-inline-edit).
+
+For more info, also visit npm [here](https://www.npmjs.com/package/antd-inline-edit).
