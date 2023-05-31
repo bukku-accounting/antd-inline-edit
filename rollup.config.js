@@ -1,30 +1,23 @@
-import { babel } from '@rollup/plugin-babel';
+import { babel } from '@rollup/plugin-babel'; // babel to transpile js codes for older browsers (eg arrow fx)
 import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-
-// import typescript from "@rollup/plugin-typescript";
-// import dts from "rollup-plugin-dts";
-
-// To handle css files
-// import postcss from "rollup-plugin-postcss";
-
-import terser from '@rollup/plugin-terser';
+import commonjs from '@rollup/plugin-commonjs'; // to solve importing antd https://www.v2ex.com/t/805171
+import terser from '@rollup/plugin-terser'; // to minify js codes of packages
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 // import image from '@rollup/plugin-image';
 
-// const packageJson = require("./package.json");
+import packageJson from './package.json';
 
 export default [
   {
     input: './src/index.js',
     output: [
       {
-        file: 'dist/index.js',
+        file: packageJson.main,
         format: 'cjs',
         // sourcemap: true,
       },
       {
-        file: 'dist/index.es.js',
+        file: packageJson.module,
         format: 'esm',
         exports: 'named',
         // sourcemap: true,
@@ -42,14 +35,6 @@ export default [
       //   postcss(),
 
       terser(), // to minify js codes of packages
-    //   image()
     ],
   },
-  // {
-  //   input: "dist/esm/types/index.d.ts",
-  //   output: [{ file: "dist/index.d.ts", format: "esm" }],
-  //   // plugins: [dts()],
-
-  //   external: [/\.css$/], // telling rollup anything that is .css aren't part of type exports
-  // },
 ];

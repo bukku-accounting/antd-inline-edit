@@ -1,6 +1,6 @@
 import { Input } from 'antd';
 import React from 'react';
-import { InputSuffix } from './InputSuffix';
+import { InputSuffix } from '../InputSuffix/InputSuffix';
 
 /**
  * Factory function to create an input / textarea component
@@ -36,7 +36,7 @@ export function InlineEditInputFactory({
   const onBlur = (e) => {
     // if undo button is clicked, don't blur immediately
     // isEditing will be false after undo button is clicked
-    if (e.relatedTarget?.id === 'inline-edit__undo-button') { return; }
+    // if (e.relatedTarget?.id === 'inline-edit__undo-button') { return; }
 
     onInputSave(e);
   };
@@ -52,24 +52,24 @@ export function InlineEditInputFactory({
     // showCount
   };
   const inputProps = {
-    className: 'inline-edit__input input-component',
+    className: `inline-edit__input input-component ${isChanged ? 'has-suffix' : ''}`,
     suffix: <InputSuffix isChanged={isChanged} onUndoClick={onUndoClick} />,
   };
   const textAreaProps = {
-    className: 'inline-edit__input textarea-component',
+    className: `inline-edit__input textarea-component ${isChanged ? 'has-suffix' : ''}`,
     autoSize: { minRows: 1, maxRows: 120 },
   };
 
   if (component === 'textarea') {
     return (
-      <div className="inline-edit__textarea-wrapper">
+      <div className={`inline-edit__wrapper inline-edit__textarea-wrapper ${isChanged ? 'has-suffix' : ''}`}>
         <Input.TextArea {...commonProps} {...textAreaProps} />
         <InputSuffix component="textarea" isChanged={isChanged} onUndoClick={onUndoClick} />
       </div>
     );
   }
 
-  if (component === 'input') { return <Input {...commonProps} {...inputProps} />; }
-
-  return <Input {...commonProps} {...inputProps} />;
+  return (
+    <Input {...commonProps} {...inputProps} />
+  );
 }

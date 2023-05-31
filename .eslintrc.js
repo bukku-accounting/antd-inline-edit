@@ -2,9 +2,13 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+
+    // for jest testing
+    jest: true,
   },
   extends: [
     'plugin:react/recommended',
+    // 'plugin:jest/recommended',
     'airbnb',
   ],
   overrides: [

@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'centered',
+    layout: 'padded',
   },
 };
 
@@ -45,6 +45,6 @@ export const InlineEditStartWithEditViewOpen = {
 
 export const InlineEditDisplayRenderer = {
   args: {
-    displayRenderer: (label) => <h2>{label || 'Click to Edit'}</h2>,
+    displayRenderer: (label) => (<h2>{label}</h2>),
   },
 };

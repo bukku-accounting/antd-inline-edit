@@ -1,7 +1,9 @@
 import { css } from 'styled-components';
 
 export const InputSuffixStyles = css`
-
+    .display-none {
+        display: none;
+    }
     .textarea-component {
         white-space: pre-wrap;
     }
