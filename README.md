@@ -1,3 +1,7 @@
+[![codecov](https://codecov.io/gh/erictehyc/antd-inline-edit/branch/main/graph/badge.svg?token=W68XTD9GN3)](https://codecov.io/gh/erictehyc/antd-inline-edit)
+[![Running Code Coverage](https://github.com/erictehyc/antd-inline-edit/actions/workflows/codecov.yml/badge.svg)](https://github.com/erictehyc/antd-inline-edit/actions/workflows/codecov.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![install size](https://packagephobia.com/badge?p=antd-inline-edit)](https://packagephobia.com/result?p=antd-inline-edit)
 
 !["Antd Inline Edit](/public/images/antdInlineEditLogo.svg "Antd Inline Edit")
 
