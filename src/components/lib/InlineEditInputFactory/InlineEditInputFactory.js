@@ -36,7 +36,7 @@ export function InlineEditInputFactory({
   const onBlur = (e) => {
     // if undo button is clicked, don't blur immediately
     // isEditing will be false after undo button is clicked
-    // if (e.relatedTarget?.id === 'inline-edit__undo-button') { return; }
+    if (e.relatedTarget?.id === 'inline-edit__undo-button') { return; }
 
     onInputSave(e);
   };

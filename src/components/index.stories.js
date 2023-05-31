@@ -28,9 +28,11 @@ export const InlineEditTextArea = {
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const InlineEditInitialState = {
+export const InlineEditDefaultValue = {
   args: {
     inputComponent: 'input',
+    defaultValue: 'Default Value',
+    initialValue: 'Initial Value',
   },
 };
 

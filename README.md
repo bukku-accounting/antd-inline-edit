@@ -3,7 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![install size](https://packagephobia.com/badge?p=antd-inline-edit)](https://packagephobia.com/result?p=antd-inline-edit)
 
-!["Antd Inline Edit](/public/images/antdInlineEditLogo.svg "Antd Inline Edit")
+!["Antd Inline Edit"](/public/images/antdInlineEditLogo.svg "Antd Inline Edit")
+!["Antd Inline Edit Demo"](/public/DemoGif.gif)
 
 # Antd Inline Edit
 

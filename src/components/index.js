@@ -31,8 +31,8 @@ import { StyleWrapper } from './StyleWrapper';
 function InlineEdit({
   onSave = () => {},
   displayRenderer = () => {},
-  initialValue,
-  defaultValue,
+  initialValue = null,
+  defaultValue = null,
   maxLength = globals.DEFAULT_INPUT_MAX_LENGTH,
   inputComponent = 'input', // 'input' | 'textarea'
   startWithEditViewOpen = false,
