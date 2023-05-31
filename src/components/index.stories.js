@@ -1,4 +1,5 @@
-import InlineEdit from '../components';
+import React from 'react';
+import InlineEdit from '.';
 
 export default {
   title: 'Component/InlineEdit',
@@ -16,8 +17,6 @@ export const InlineEditInput = {
   args: {
     initialValue: 'Hello World - Input',
     inputComponent: 'input',
-    //   primary: true,
-    //   label: 'Button',
   },
 };
 
@@ -25,8 +24,6 @@ export const InlineEditTextArea = {
   args: {
     initialValue: 'Hello World - Textarea',
     inputComponent: 'textarea',
-    //   primary: true,
-    //   label: 'Button',
   },
 };
 

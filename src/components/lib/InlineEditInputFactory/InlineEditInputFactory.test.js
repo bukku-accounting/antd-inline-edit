@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { act } from 'react-test-renderer';
 import {
   fireEvent, render, screen,
-} from '../../test-utils';
+} from '../../testUtils/test-utils';
 import { InlineEditInputFactory } from './InlineEditInputFactory';
 
 const mockSetState = jest.fn();

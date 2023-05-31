@@ -1,7 +1,7 @@
 import 'jest-styled-components';
 import React from 'react';
 import { HistoryOutlined } from '@ant-design/icons';
-import { fireEvent, render, screen } from '../../test-utils';
+import { fireEvent, render, screen } from '../../testUtils/test-utils';
 import globals from '../globals';
 import { InputSuffix } from './InputSuffix';
 

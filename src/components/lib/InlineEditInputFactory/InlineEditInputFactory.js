@@ -24,7 +24,7 @@ export function InlineEditInputFactory({
   setLabel = () => {},
   onUndoClick = () => {},
   inputRef,
-  maxLength = 255,
+  maxLength,
 }) {
   const onInputSave = (e) => {
     const text = e.target.value;
@@ -41,12 +41,16 @@ export function InlineEditInputFactory({
     onInputSave(e);
   };
 
+  const onChangeFn = (e) => {
+    setLabel(e.target.value);
+  };
+
   const commonProps = {
     ref: inputRef,
     value: label,
     onPressEnter: onInputSave,
     onBlur,
-    onChange: (e) => setLabel(e.target.value),
+    onChange: onChangeFn,
     placeholder: defaultLabel,
     maxLength,
     // showCount

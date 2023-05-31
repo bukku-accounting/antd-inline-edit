@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { StyleWrapper } from './StyleWrapper';
+import { StyleWrapper } from '../StyleWrapper';
 
 // React Testing Library's render method to setup Providers & Wrappers for tests
 // https://testing-library.com/docs/react-testing-library/setup/
