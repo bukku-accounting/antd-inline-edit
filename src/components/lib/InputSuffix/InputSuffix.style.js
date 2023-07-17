@@ -16,7 +16,7 @@ export const InputSuffixStyles = css`
     .inline-edit__suffix-container {
         position: absolute;
         top: 6px;
-        right: 8px;
+        right: 16px;
 
         .anticon {
             font-size: 14px;

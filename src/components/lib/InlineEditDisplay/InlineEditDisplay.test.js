@@ -111,10 +111,39 @@ describe('InlineEditDisplay', () => {
       render(
         <InlineEditDisplay
           onClick={mockOnClick}
+          // placeholder={globals.DEFAULT_PLACEHOLDER}
           displayRenderer={(label) => (<h3>{label}</h3>)}
         />,
       );
-      const displayDivPlaceholder = screen.getByRole('heading', { name: globals.DEFAULT_PLACEHOLDER });
+      const displayDivPlaceholder = screen.getByText(globals.DEFAULT_PLACEHOLDER);
+      expect(displayDivPlaceholder).toBeVisible();
+    });
+
+    test('show custom placeholder if no label prop', () => {
+      render(
+        <InlineEditDisplay
+          onClick={mockOnClick}
+          placeholder="Hello Custom Placeholder"
+          displayRenderer={(label) => (<h3>{label}</h3>)}
+        />,
+      );
+      const displayDivPlaceholder = screen.getByText('Hello Custom Placeholder');
+      expect(displayDivPlaceholder).toBeVisible();
+    });
+
+    test('show custom placeholder custom renderer if no label prop', () => {
+      render(
+        <InlineEditDisplay
+          onClick={mockOnClick}
+          placeholder="Hello Custom Placeholder"
+          displayRenderer={(label, placeholder) => {
+            if (label) { return (<h3>{label}</h3>); }
+            if (placeholder && !label) { return <h1>{placeholder}</h1>; }
+            return null;
+          }}
+        />,
+      );
+      const displayDivPlaceholder = screen.getByRole('heading', { name: 'Hello Custom Placeholder' });
       expect(displayDivPlaceholder).toBeVisible();
     });
 

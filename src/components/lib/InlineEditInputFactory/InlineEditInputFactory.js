@@ -66,7 +66,7 @@ export function InlineEditInputFactory({
   };
   const textAreaProps = {
     className: `inline-edit__input textarea-component ${isChanged ? 'has-suffix' : ''}`,
-    autoSize: { minRows: 1, maxRows: 120 },
+    autoSize: { minRows: 1, maxRows: 4 },
   };
 
   if (component === 'textarea') {

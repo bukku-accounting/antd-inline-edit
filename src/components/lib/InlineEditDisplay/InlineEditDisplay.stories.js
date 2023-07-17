@@ -16,6 +16,14 @@ export const InlineEditDisplayDisplayRenderer = {
   args: {
     onClick: () => {},
     // label: 'Hello World - Display',
-    displayRenderer: (label) => (<h3>{label}</h3>),
+    placeholder: 'Hello World - Placeholder',
+    // placeholder: globals.DEFAULT_PLACEHOLDER,
+    // displayRenderer: (label) => <h3>{label}</h3>
+    displayRenderer: (label, placeholder) => {
+      if (label) { return (<h3>{label}</h3>); }
+      if (placeholder && !label) { return <h1>{placeholder}</h1>; }
+      return null;
+    },
+
   },
 };

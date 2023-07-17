@@ -1495,9 +1495,17 @@ function InlineEditDisplay(_ref) {
     placeholder = _ref$placeholder === void 0 ? globals.DEFAULT_PLACEHOLDER : _ref$placeholder,
     displayRenderer = _ref.displayRenderer;
   if (displayRenderer) {
-    var displayDOM = displayRenderer(label || placeholder);
-    // console.log('aaa InlineEditDisplay', { displayRenderer, label, displayDOM });
+    // console.log('aaa InlineEditDisplay', {
+    //   displayRenderer, label, placeholder, displayDOM, paramLength: displayRenderer.length,
+    // });
 
+    var displayDOM = displayRenderer(label, placeholder);
+    if (displayRenderer.length === 1 && !label) {
+      displayDOM = /*#__PURE__*/React__default.createElement(DisplayPlaceholder, {
+        onClick: onClick,
+        placeholder: placeholder
+      });
+    }
     if (typeof displayDOM === 'string') {
       return /*#__PURE__*/React__default.createElement("div", {
         onClick: onClick,
@@ -1509,12 +1517,13 @@ function InlineEditDisplay(_ref) {
 
     // append classNames
     if ( /*#__PURE__*/React__default.isValidElement(displayDOM)) {
-      var _displayDOM$props;
+      var _displayDOM, _displayDOM$props;
       return /*#__PURE__*/React__default.cloneElement(displayDOM, {
-        className: "".concat((displayDOM === null || displayDOM === void 0 ? void 0 : (_displayDOM$props = displayDOM.props) === null || _displayDOM$props === void 0 ? void 0 : _displayDOM$props.className) || '', " inline-edit__display"),
+        className: "".concat(((_displayDOM = displayDOM) === null || _displayDOM === void 0 ? void 0 : (_displayDOM$props = _displayDOM.props) === null || _displayDOM$props === void 0 ? void 0 : _displayDOM$props.className) || '', " inline-edit__display"),
         onClick: onClick
       });
     }
+
     // return <DisplayPlaceholder onClick={onClick} placeholder={placeholder} />;
   }
 
@@ -1565,7 +1574,8 @@ function InputSuffix(_ref) {
     var suffixIcons = [];
     if (onSaveClick) {
       suffixIcons.push( /*#__PURE__*/React__default.createElement(Tooltip, {
-        title: globals.DEFAULT_SAVE_TOOLTIP_TEXT
+        title: globals.DEFAULT_SAVE_TOOLTIP_TEXT,
+        key: "save"
       }, /*#__PURE__*/React__default.createElement(CheckOutlined$1, {
         id: "inline-edit__save-button",
         onClick: onSaveClick
@@ -1573,7 +1583,8 @@ function InputSuffix(_ref) {
     }
     if (onUndoClick) {
       suffixIcons.push( /*#__PURE__*/React__default.createElement(Tooltip, {
-        title: globals.DEFAULT_UNDO_TOOLTIP_TEXT
+        title: globals.DEFAULT_UNDO_TOOLTIP_TEXT,
+        key: "undo"
       }, /*#__PURE__*/React__default.createElement(UndoOutlined$1, {
         id: "inline-edit__undo-button",
         className: "inline-edit input-suffix--".concat(component, " ").concat(isChanged ? '' : 'display-none'),
@@ -1657,7 +1668,7 @@ function InlineEditInputFactory(_ref) {
     className: "inline-edit__input textarea-component ".concat(isChanged ? 'has-suffix' : ''),
     autoSize: {
       minRows: 1,
-      maxRows: 120
+      maxRows: 4
     }
   };
   if (component === 'textarea') {
@@ -1680,7 +1691,7 @@ var _templateObject$2;
 var InlineEditInputFactoryStyles = css(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n   /* .has-suffix { */\n    .inline-edit__input {\n        padding-right: 20px;\n    }\n\n   /* } */\n"])));
 
 var _templateObject$1;
-var InputSuffixStyles = css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n\n    .inline-edit__suffix-container {\n        position: absolute;\n        top: 6px;\n        right: 8px;\n\n        .anticon {\n            font-size: 14px;\n        }\n\n        .anticon:not(:first-child) {\n            margin-left: 8px;\n        }\n    }\n\n    .inline-edit__input {\n        .inline-edit__suffix-container {\n            position: relative;\n            top: 0;\n            right: 0;\n        }\n    }\n\n    /* #inline-edit__undo-button {\n        position: absolute;\n        top: 8px;\n        right: 8px;\n        font-size: 14px;\n    } */\n"])));
+var InputSuffixStyles = css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n\n    .inline-edit__suffix-container {\n        position: absolute;\n        top: 6px;\n        right: 16px;\n\n        .anticon {\n            font-size: 14px;\n        }\n\n        .anticon:not(:first-child) {\n            margin-left: 8px;\n        }\n    }\n\n    .inline-edit__input {\n        .inline-edit__suffix-container {\n            position: relative;\n            top: 0;\n            right: 0;\n        }\n    }\n\n    /* #inline-edit__undo-button {\n        position: absolute;\n        top: 8px;\n        right: 8px;\n        font-size: 14px;\n    } */\n"])));
 
 var _templateObject;
 var StyledWrapper = styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  ", "\n  ", "\n  ", "\n"])), InputSuffixStyles, InlineEditInputFactoryStyles, InlineEditDisplayStyles);

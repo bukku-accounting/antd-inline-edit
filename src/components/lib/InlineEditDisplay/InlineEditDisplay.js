@@ -15,8 +15,15 @@ export function InlineEditDisplay({
   displayRenderer,
 }) {
   if (displayRenderer) {
-    const displayDOM = displayRenderer(label || placeholder);
-    // console.log('aaa InlineEditDisplay', { displayRenderer, label, displayDOM });
+    // console.log('aaa InlineEditDisplay', {
+    //   displayRenderer, label, placeholder, displayDOM, paramLength: displayRenderer.length,
+    // });
+
+    let displayDOM = displayRenderer(label, placeholder);
+
+    if (displayRenderer.length === 1 && !label) {
+      displayDOM = <DisplayPlaceholder onClick={onClick} placeholder={placeholder} />;
+    }
 
     if (typeof displayDOM === 'string') {
       return (
@@ -38,6 +45,7 @@ export function InlineEditDisplay({
         onClick,
       });
     }
+
     // return <DisplayPlaceholder onClick={onClick} placeholder={placeholder} />;
   }
 

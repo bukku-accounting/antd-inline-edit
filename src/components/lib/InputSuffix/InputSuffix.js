@@ -27,7 +27,7 @@ export function InputSuffix({
     const suffixIcons = [];
     if (onSaveClick) {
       suffixIcons.push(
-        <Tooltip title={globals.DEFAULT_SAVE_TOOLTIP_TEXT}>
+        <Tooltip title={globals.DEFAULT_SAVE_TOOLTIP_TEXT} key="save">
           <CheckOutlined
             id="inline-edit__save-button"
             onClick={onSaveClick}
@@ -37,7 +37,7 @@ export function InputSuffix({
     }
     if (onUndoClick) {
       suffixIcons.push(
-        <Tooltip title={globals.DEFAULT_UNDO_TOOLTIP_TEXT}>
+        <Tooltip title={globals.DEFAULT_UNDO_TOOLTIP_TEXT} key="undo">
           <UndoOutlined
             id="inline-edit__undo-button"
             className={`inline-edit input-suffix--${component} ${isChanged ? '' : 'display-none'}`}
