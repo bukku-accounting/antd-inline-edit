@@ -5,5 +5,6 @@ export const InlineEditInputFactoryStyles = css`
     .inline-edit__input {
         padding-right: 20px;
     }
+
    /* } */
 `;

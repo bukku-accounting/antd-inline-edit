@@ -1,0 +1,24 @@
+{
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-recess-order"
+    ],
+    "customSyntax": "postcss-styled-syntax",
+    "rules": {
+      "color-function-notation": null,
+      "selector-class-pattern": null,
+      "custom-property-pattern": null,
+      "keyframes-name-pattern": null,
+      "no-empty-source": null,
+      "block-no-empty": null,
+      "number-max-precision": null,
+      "selector-pseudo-element-colon-notation": "double",
+      "comment-empty-line-before": [
+        "always",
+        {
+            "except": ["first-nested"],
+            "ignore": ["after-comment", "stylelint-commands"]
+        }
+      ]
+    }
+}

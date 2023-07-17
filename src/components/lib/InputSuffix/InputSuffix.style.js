@@ -4,9 +4,11 @@ export const InputSuffixStyles = css`
     .display-none {
         display: none;
     }
+
     .textarea-component {
         white-space: pre-wrap;
     }
+
     .inline-edit__textarea-wrapper {
         position: relative;
     }
@@ -24,17 +26,19 @@ export const InputSuffixStyles = css`
             margin-left: 8px;
         }
     }
+
     .inline-edit__input {
         .inline-edit__suffix-container {
             position: relative;
-            top: 0px;
-            right: 0px;
+            top: 0;
+            right: 0;
         }
     }
-    #inline-edit__undo-button {
-        /* position: absolute;
-        right: 8px;
+
+    /* #inline-edit__undo-button {
+        position: absolute;
         top: 8px;
-        font-size: 14px; */
-    }
+        right: 8px;
+        font-size: 14px;
+    } */
 `;

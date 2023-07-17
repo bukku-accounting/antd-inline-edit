@@ -1,4 +1,9 @@
 {
+    "eslint.validate": [
+        "javascript"
+    ],
+    "stylelint.config": null,
+    "stylelint.validate": ["css", "scss", "javascript", "javascriptreact"],
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#036b89",
         "activityBar.background": "#036b89",
