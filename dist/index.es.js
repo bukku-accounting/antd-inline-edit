@@ -30,41 +30,6 @@ function _iterableToArrayLimit$1(arr, i) {
     return _arr;
   }
 }
-function ownKeys$1(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread2$1(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) {
-      _defineProperty$1(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-  return target;
-}
-function _defineProperty$1(obj, key, value) {
-  key = _toPropertyKey$1(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -110,20 +75,6 @@ function _arrayLikeToArray$1(arr, len) {
 }
 function _nonIterableRest$1() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _toPrimitive$1(input, hint) {
-  if (typeof input !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (typeof res !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-function _toPropertyKey$1(arg) {
-  var key = _toPrimitive$1(arg, "string");
-  return typeof key === "symbol" ? key : String(key);
 }
 
 var IconContext = /*#__PURE__*/createContext({});
@@ -1502,6 +1453,19 @@ Icon.setTwoToneColor = setTwoToneColor;
 var AntdIcon = Icon;
 
 // This icon file is generated automatically.
+var CheckOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5 207 474a32 32 0 00-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z" } }] }, "name": "check", "theme": "outlined" };
+var CheckOutlinedSvg = CheckOutlined$2;
+
+var CheckOutlined = function CheckOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(AntdIcon, _objectSpread2(_objectSpread2({}, props), {}, {
+    ref: ref,
+    icon: CheckOutlinedSvg
+  }));
+};
+CheckOutlined.displayName = 'CheckOutlined';
+var CheckOutlined$1 = /*#__PURE__*/React.forwardRef(CheckOutlined);
+
+// This icon file is generated automatically.
 var UndoOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M511.4 124C290.5 124.3 112 303 112 523.9c0 128 60.2 242 153.8 315.2l-37.5 48c-4.1 5.3-.3 13 6.3 12.9l167-.8c5.2 0 9-4.9 7.7-9.9L369.8 727a8 8 0 00-14.1-3L315 776.1c-10.2-8-20-16.7-29.3-26a318.64 318.64 0 01-68.6-101.7C200.4 609 192 567.1 192 523.9s8.4-85.1 25.1-124.5c16.1-38.1 39.2-72.3 68.6-101.7 29.4-29.4 63.6-52.5 101.7-68.6C426.9 212.4 468.8 204 512 204s85.1 8.4 124.5 25.1c38.1 16.1 72.3 39.2 101.7 68.6 29.4 29.4 52.5 63.6 68.6 101.7 16.7 39.4 25.1 81.3 25.1 124.5s-8.4 85.1-25.1 124.5a318.64 318.64 0 01-68.6 101.7c-7.5 7.5-15.3 14.5-23.4 21.2a7.93 7.93 0 00-1.2 11.1l39.4 50.5c2.8 3.5 7.9 4.1 11.4 1.3C854.5 760.8 912 649.1 912 523.9c0-221.1-179.4-400.2-400.6-399.9z" } }] }, "name": "undo", "theme": "outlined" };
 var UndoOutlinedSvg = UndoOutlined$2;
 
@@ -1517,6 +1481,7 @@ var UndoOutlined$1 = /*#__PURE__*/React.forwardRef(UndoOutlined);
 var Globals = {
   DEFAULT_PLACEHOLDER: 'Click to edit',
   DEFAULT_UNDO_TOOLTIP_TEXT: 'Undo',
+  DEFAULT_SAVE_TOOLTIP_TEXT: 'Save',
   DEFAULT_UNDO_ICON: /*#__PURE__*/React__default.createElement(UndoOutlined$1, null),
   DEFAULT_INPUT_MAX_LENGTH: 155
 };
@@ -1582,30 +1547,44 @@ function InputSuffix(_ref) {
   var icon = _ref.icon,
     isChanged = _ref.isChanged,
     onUndoClick = _ref.onUndoClick,
+    onSaveClick = _ref.onSaveClick,
     _ref$component = _ref.component,
     component = _ref$component === void 0 ? 'input' : _ref$component;
   if (icon && ! /*#__PURE__*/React__default.isValidElement(icon)) {
     throw new Error('Invalid icon prop: icon must be a valid React element.');
   }
-  var commonProps = {
-    id: 'inline-edit__undo-button',
-    className: "inline-edit input-suffix--".concat(component, " ").concat(isChanged ? '' : 'display-none'),
-    onClick: onUndoClick
-  };
   var renderIcon = function renderIcon() {
     if (icon) {
       var className = icon.props.className;
-      return /*#__PURE__*/React__default.cloneElement(icon, _objectSpread2$1(_objectSpread2$1({}, commonProps), {}, {
-        className: "".concat(className, " ").concat(commonProps.className)
-      }));
+      return /*#__PURE__*/React__default.cloneElement(icon, {
+        id: 'inline-edit__undo-button',
+        className: "".concat(className, " inline-edit input-suffix--").concat(component, " ").concat(isChanged ? '' : 'display-none'),
+        onClick: onUndoClick
+      });
+    }
+    var suffixIcons = [];
+    if (onSaveClick) {
+      suffixIcons.push( /*#__PURE__*/React__default.createElement(Tooltip, {
+        title: globals.DEFAULT_SAVE_TOOLTIP_TEXT
+      }, /*#__PURE__*/React__default.createElement(CheckOutlined$1, {
+        id: "inline-edit__save-button",
+        onClick: onSaveClick
+      })));
+    }
+    if (onUndoClick) {
+      suffixIcons.push( /*#__PURE__*/React__default.createElement(Tooltip, {
+        title: globals.DEFAULT_UNDO_TOOLTIP_TEXT
+      }, /*#__PURE__*/React__default.createElement(UndoOutlined$1, {
+        id: "inline-edit__undo-button",
+        className: "inline-edit input-suffix--".concat(component, " ").concat(isChanged ? '' : 'display-none'),
+        onClick: onUndoClick
+      })));
     }
 
     // undo button
-    return /*#__PURE__*/React__default.createElement(Tooltip, {
-      title: globals.DEFAULT_UNDO_TOOLTIP_TEXT
-    }, /*#__PURE__*/React__default.createElement(UndoOutlined$1, _extends({
-      id: "inline-edit__undo-button"
-    }, commonProps)));
+    return /*#__PURE__*/React__default.createElement("span", {
+      className: "inline-edit__suffix-container"
+    }, suffixIcons);
   };
   return renderIcon();
 }
@@ -1657,7 +1636,7 @@ function InlineEditInputFactory(_ref) {
   var commonProps = {
     ref: inputRef,
     value: label,
-    onPressEnter: onInputSave,
+    // onPressEnter: onInputSave,
     onBlur: onBlur,
     onChange: onChangeFn,
     placeholder: defaultLabel,
@@ -1667,9 +1646,11 @@ function InlineEditInputFactory(_ref) {
 
   var inputProps = {
     className: "inline-edit__input input-component ".concat(isChanged ? 'has-suffix' : ''),
+    onPressEnter: onInputSave,
     suffix: /*#__PURE__*/React__default.createElement(InputSuffix, {
       isChanged: isChanged,
-      onUndoClick: onUndoClick
+      onUndoClick: onUndoClick,
+      onSaveClick: onInputSave
     })
   };
   var textAreaProps = {
@@ -1685,20 +1666,24 @@ function InlineEditInputFactory(_ref) {
     }, /*#__PURE__*/React__default.createElement(Input.TextArea, _extends({}, commonProps, textAreaProps)), /*#__PURE__*/React__default.createElement(InputSuffix, {
       component: "textarea",
       isChanged: isChanged,
-      onUndoClick: onUndoClick
+      onUndoClick: onUndoClick,
+      onSaveClick: onInputSave
     }));
   }
   return /*#__PURE__*/React__default.createElement(Input, _extends({}, commonProps, inputProps));
 }
 
+var _templateObject$3;
+var InlineEditDisplayStyles = css(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n    .inline-edit__display {\n        white-space: pre-wrap;\n    }\n"])));
+
 var _templateObject$2;
-var InlineEditInputFactoryStyles = css(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n   /* .has-suffix { */\n    .inline-edit__input {\n        padding-right: 20px;\n    }\n   /* } */\n"])));
+var InlineEditInputFactoryStyles = css(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n   /* .has-suffix { */\n    .inline-edit__input {\n        padding-right: 20px;\n    }\n\n   /* } */\n"])));
 
 var _templateObject$1;
-var InputSuffixStyles = css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n    #inline-edit__undo-button {\n        position: absolute;\n        right: 8px;\n        top: 8px;\n        font-size: 14px;\n    }\n"])));
+var InputSuffixStyles = css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n\n    .inline-edit__suffix-container {\n        position: absolute;\n        top: 6px;\n        right: 8px;\n\n        .anticon {\n            font-size: 14px;\n        }\n\n        .anticon:not(:first-child) {\n            margin-left: 8px;\n        }\n    }\n\n    .inline-edit__input {\n        .inline-edit__suffix-container {\n            position: relative;\n            top: 0;\n            right: 0;\n        }\n    }\n\n    /* #inline-edit__undo-button {\n        position: absolute;\n        top: 8px;\n        right: 8px;\n        font-size: 14px;\n    } */\n"])));
 
 var _templateObject;
-var StyledWrapper = styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  ", "\n  ", "\n"])), InputSuffixStyles, InlineEditInputFactoryStyles);
+var StyledWrapper = styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  ", "\n  ", "\n  ", "\n"])), InputSuffixStyles, InlineEditInputFactoryStyles, InlineEditDisplayStyles);
 function StyleWrapper(_ref) {
   var children = _ref.children;
   return /*#__PURE__*/React__default.createElement(StyledWrapper, {
