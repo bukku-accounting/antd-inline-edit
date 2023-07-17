@@ -48,7 +48,7 @@ export function InlineEditInputFactory({
   const commonProps = {
     ref: inputRef,
     value: label,
-    onPressEnter: onInputSave,
+    // onPressEnter: onInputSave,
     onBlur,
     onChange: onChangeFn,
     placeholder: defaultLabel,
@@ -57,7 +57,12 @@ export function InlineEditInputFactory({
   };
   const inputProps = {
     className: `inline-edit__input input-component ${isChanged ? 'has-suffix' : ''}`,
-    suffix: <InputSuffix isChanged={isChanged} onUndoClick={onUndoClick} />,
+    onPressEnter: onInputSave,
+    suffix: <InputSuffix
+      isChanged={isChanged}
+      onUndoClick={onUndoClick}
+      onSaveClick={onInputSave}
+    />,
   };
   const textAreaProps = {
     className: `inline-edit__input textarea-component ${isChanged ? 'has-suffix' : ''}`,
@@ -67,13 +72,24 @@ export function InlineEditInputFactory({
   if (component === 'textarea') {
     return (
       <div className={`inline-edit__wrapper inline-edit__textarea-wrapper ${isChanged ? 'has-suffix' : ''}`}>
-        <Input.TextArea {...commonProps} {...textAreaProps} />
-        <InputSuffix component="textarea" isChanged={isChanged} onUndoClick={onUndoClick} />
+        <Input.TextArea
+          {...commonProps}
+          {...textAreaProps}
+        />
+        <InputSuffix
+          component="textarea"
+          isChanged={isChanged}
+          onUndoClick={onUndoClick}
+          onSaveClick={onInputSave}
+        />
       </div>
     );
   }
 
   return (
-    <Input {...commonProps} {...inputProps} />
+    <Input
+      {...commonProps}
+      {...inputProps}
+    />
   );
 }
