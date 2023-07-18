@@ -26,6 +26,7 @@ import { StyleWrapper } from './StyleWrapper';
  * @param {String} inputComponent - 'input' or 'textarea'
  * @param {Boolean} startWithEditViewOpen - whether to start with edit view open (default: false)
  * @param {String} displayPlaceholder - placeholder for display view when value is empty
+ * @param {Object} textAreaProps - props to override antd's Input.TextArea
  * @returns {ReactDOM}
  */
 function InlineEdit({
@@ -37,6 +38,7 @@ function InlineEdit({
   inputComponent = 'input', // 'input' | 'textarea'
   startWithEditViewOpen = false,
   displayPlaceholder = globals.DEFAULT_PLACEHOLDER,
+  textAreaProps = {},
 }) {
   const [isEditing, setIsEditing] = useState(startWithEditViewOpen);
   const [label, setLabel] = useState(initialValue);
@@ -82,6 +84,7 @@ function InlineEdit({
         onUndoClick={onUndoClick}
         maxLength={maxLength}
         component={inputComponent}
+        textAreaProps={textAreaProps}
       />
     </div>
   );

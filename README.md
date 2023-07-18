@@ -74,6 +74,7 @@ The Antd Inline Edit component accepts the following props:
 | maxLength | The maximum number of characters that can be entered into the input field. | Number | `155` | `50` |
 | startWithEditViewOpen | whether to start with editable component open | Boolean | `false` | `true` |
 | inputComponent | The editable component rendered (`input` or `textarea`). | String | `input` | `textarea` |
+| textAreaProps | The props passed to the antd `textarea` component. Only valid when inputComponent is `textarea` | Object | `{}` | `{ autoSize: { minRows: 2, maxRows: 6 }}` |
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

@@ -161,6 +161,35 @@ describe('onUndoClick()', () => {
     expect(inputDOM).toBeFalsy();
     expect(inputDOM2).toBeVisible();
   });
+
+  describe('textAreaProps Prop', () => {
+    test('should render with textAreaProps', () => {
+      render(
+        <InlineEdit
+          onSave={mockOnSave}
+          inputComponent="textarea"
+          startWithEditViewOpen
+          textAreaProps={{
+            className: 'henlooo',
+            autoSize: { minRows: 2, maxRows: 6 },
+            // styles: { minHeight: '54px', maxHeight: '142px' },
+            showCount: true,
+          }}
+        />,
+      );
+
+      const textAreaDOM = document.querySelector('.inline-edit__input.textarea-component');
+
+      const textCountDOM = document.querySelector('.ant-input-data-count');
+      const suffixButtonsDOM = document.querySelector('.inline-edit__suffix-container');
+
+      expect(textAreaDOM).toBeVisible();
+      expect(textCountDOM).toBeVisible();
+      expect(suffixButtonsDOM).toBeVisible();
+
+      expect(textAreaDOM).toHaveClass('henlooo');
+    });
+  });
 });
 
 // describe('maxLength prop', () => {

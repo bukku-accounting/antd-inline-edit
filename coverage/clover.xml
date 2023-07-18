@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1689588570658" clover="3.2.0">
-  <project timestamp="1689588570659" name="All files">
-    <metrics statements="69" coveredstatements="69" conditionals="61" coveredconditionals="58" methods="24" coveredmethods="21" elements="154" coveredelements="148" complexity="0" loc="69" ncloc="69" packages="7" files="11" classes="11"/>
+<coverage generated="1689656023077" clover="3.2.0">
+  <project timestamp="1689656023077" name="All files">
+    <metrics statements="70" coveredstatements="70" conditionals="65" coveredconditionals="62" methods="24" coveredmethods="21" elements="159" coveredelements="153" complexity="0" loc="70" ncloc="70" packages="7" files="11" classes="11"/>
     <package name="src">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/yichangteh/Documents/bukku/open-source/antd-inline-edit/src/index.js">
@@ -9,34 +9,34 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="22" coveredstatements="22" conditionals="14" coveredconditionals="14" methods="11" coveredmethods="11"/>
+      <metrics statements="22" coveredstatements="22" conditionals="15" coveredconditionals="15" methods="11" coveredmethods="11"/>
       <file name="StyleWrapper.js" path="/Users/yichangteh/Documents/bukku/open-source/antd-inline-edit/src/components/StyleWrapper.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="7" count="4" type="stmt"/>
-        <line num="14" count="92" type="stmt"/>
+        <line num="14" count="94" type="stmt"/>
       </file>
       <file name="index.js" path="/Users/yichangteh/Documents/bukku/open-source/antd-inline-edit/src/components/index.js">
-        <metrics statements="20" coveredstatements="20" conditionals="14" coveredconditionals="14" methods="10" coveredmethods="10"/>
-        <line num="41" count="57" type="stmt"/>
-        <line num="42" count="57" type="stmt"/>
-        <line num="43" count="57" type="stmt"/>
-        <line num="47" count="57" type="stmt"/>
-        <line num="48" count="9" type="stmt"/>
-        <line num="50" count="9" type="stmt"/>
-        <line num="54" count="57" type="stmt"/>
-        <line num="55" count="15" type="cond" truecount="4" falsecount="0"/>
-        <line num="57" count="15" type="stmt"/>
-        <line num="60" count="57" type="stmt"/>
-        <line num="61" count="5" type="stmt"/>
-        <line num="62" count="5" type="stmt"/>
+        <metrics statements="20" coveredstatements="20" conditionals="15" coveredconditionals="15" methods="10" coveredmethods="10"/>
+        <line num="43" count="58" type="stmt"/>
+        <line num="44" count="58" type="stmt"/>
+        <line num="45" count="58" type="stmt"/>
+        <line num="49" count="58" type="stmt"/>
+        <line num="50" count="10" type="stmt"/>
+        <line num="52" count="10" type="stmt"/>
+        <line num="56" count="58" type="stmt"/>
+        <line num="57" count="16" type="cond" truecount="4" falsecount="0"/>
+        <line num="59" count="16" type="stmt"/>
+        <line num="62" count="58" type="stmt"/>
         <line num="63" count="5" type="stmt"/>
-        <line num="66" count="57" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
-        <line num="74" count="57" type="stmt"/>
-        <line num="90" count="57" type="stmt"/>
-        <line num="92" count="1" type="stmt"/>
-        <line num="101" count="57" type="stmt"/>
+        <line num="64" count="5" type="stmt"/>
+        <line num="65" count="5" type="stmt"/>
+        <line num="68" count="58" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="76" count="58" type="stmt"/>
+        <line num="93" count="58" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="104" count="58" type="stmt"/>
       </file>
     </package>
     <package name="src.components.lib">
@@ -70,24 +70,25 @@
       </file>
     </package>
     <package name="src.components.lib.InlineEditInputFactory">
-      <metrics statements="16" coveredstatements="16" conditionals="17" coveredconditionals="16" methods="7" coveredmethods="4"/>
+      <metrics statements="17" coveredstatements="17" conditionals="20" coveredconditionals="19" methods="7" coveredmethods="4"/>
       <file name="InlineEditInputFactory.js" path="/Users/yichangteh/Documents/bukku/open-source/antd-inline-edit/src/components/lib/InlineEditInputFactory/InlineEditInputFactory.js">
-        <metrics statements="15" coveredstatements="15" conditionals="17" coveredconditionals="16" methods="7" coveredmethods="4"/>
-        <line num="29" count="112" type="stmt"/>
-        <line num="30" count="6" type="stmt"/>
-        <line num="31" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="34" count="112" type="stmt"/>
-        <line num="36" count="112" type="stmt"/>
-        <line num="39" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="41" count="4" type="stmt"/>
-        <line num="44" count="112" type="stmt"/>
-        <line num="45" count="92" type="stmt"/>
-        <line num="48" count="112" type="stmt"/>
-        <line num="58" count="112" type="stmt"/>
-        <line num="67" count="112" type="stmt"/>
-        <line num="72" count="112" type="cond" truecount="2" falsecount="0"/>
-        <line num="73" count="3" type="stmt"/>
-        <line num="89" count="109" type="stmt"/>
+        <metrics statements="16" coveredstatements="16" conditionals="20" coveredconditionals="19" methods="7" coveredmethods="4"/>
+        <line num="31" count="113" type="stmt"/>
+        <line num="32" count="6" type="stmt"/>
+        <line num="33" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="113" type="stmt"/>
+        <line num="38" count="113" type="stmt"/>
+        <line num="41" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="46" count="113" type="stmt"/>
+        <line num="47" count="92" type="stmt"/>
+        <line num="50" count="113" type="stmt"/>
+        <line num="60" count="113" type="stmt"/>
+        <line num="70" count="113" type="stmt"/>
+        <line num="71" count="113" type="stmt"/>
+        <line num="77" count="113" type="cond" truecount="2" falsecount="0"/>
+        <line num="78" count="4" type="stmt"/>
+        <line num="94" count="109" type="stmt"/>
       </file>
       <file name="InlineEditInputFactory.style.js" path="/Users/yichangteh/Documents/bukku/open-source/antd-inline-edit/src/components/lib/InlineEditInputFactory/InlineEditInputFactory.style.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -98,19 +99,19 @@
       <metrics statements="14" coveredstatements="14" conditionals="15" coveredconditionals="13" methods="2" coveredmethods="2"/>
       <file name="InputSuffix.js" path="/Users/yichangteh/Documents/bukku/open-source/antd-inline-edit/src/components/lib/InputSuffix/InputSuffix.js">
         <metrics statements="13" coveredstatements="13" conditionals="15" coveredconditionals="13" methods="2" coveredmethods="2"/>
-        <line num="13" count="120" type="cond" truecount="4" falsecount="0"/>
+        <line num="13" count="121" type="cond" truecount="4" falsecount="0"/>
         <line num="14" count="4" type="stmt"/>
-        <line num="17" count="116" type="stmt"/>
-        <line num="18" count="116" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="117" type="stmt"/>
+        <line num="18" count="117" type="cond" truecount="2" falsecount="0"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="27" count="115" type="stmt"/>
-        <line num="28" count="115" type="cond" truecount="2" falsecount="0"/>
-        <line num="29" count="112" type="stmt"/>
-        <line num="38" count="115" type="cond" truecount="1" falsecount="1"/>
-        <line num="39" count="115" type="stmt"/>
-        <line num="51" count="115" type="stmt"/>
-        <line num="58" count="116" type="stmt"/>
+        <line num="27" count="116" type="stmt"/>
+        <line num="28" count="116" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="113" type="stmt"/>
+        <line num="38" count="116" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="116" type="stmt"/>
+        <line num="51" count="116" type="stmt"/>
+        <line num="58" count="117" type="stmt"/>
       </file>
       <file name="InputSuffix.style.js" path="/Users/yichangteh/Documents/bukku/open-source/antd-inline-edit/src/components/lib/InputSuffix/InputSuffix.style.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -121,8 +122,8 @@
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="test-utils.js" path="/Users/yichangteh/Documents/bukku/open-source/antd-inline-edit/src/components/testUtils/test-utils.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="8" count="41" type="stmt"/>
-        <line num="15" count="40" type="stmt"/>
+        <line num="8" count="42" type="stmt"/>
+        <line num="15" count="41" type="stmt"/>
       </file>
     </package>
   </project>

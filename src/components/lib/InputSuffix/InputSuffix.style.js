@@ -17,6 +17,7 @@ export const InputSuffixStyles = css`
         position: absolute;
         top: 6px;
         right: 16px;
+        z-index: 1;
 
         .anticon {
             font-size: 14px;

@@ -13,6 +13,7 @@ import { InputSuffix } from '../InputSuffix/InputSuffix';
  * @param {Function} onUndoClick - callback function to reset value to default
  * @param {Object} inputRef - ref to input
  * @param {Number} maxLength - max length of input
+ * @param {Object} textAreaProps - props to override antd's Input.TextArea
  * @returns {ReactDOM}
  */
 export function InlineEditInputFactory({
@@ -25,6 +26,7 @@ export function InlineEditInputFactory({
   onUndoClick = () => {},
   inputRef,
   maxLength,
+  textAreaProps = {},
 }) {
   const onInputSave = (e) => {
     const text = e.target.value;
@@ -64,9 +66,12 @@ export function InlineEditInputFactory({
       onSaveClick={onInputSave}
     />,
   };
-  const textAreaProps = {
-    className: `inline-edit__input textarea-component ${isChanged ? 'has-suffix' : ''}`,
+
+  const { className, ...restTextAreaProps } = textAreaProps;
+  const parsedTextAreaProps = {
+    className: `inline-edit__input textarea-component ${isChanged ? 'has-suffix' : ''} ${className || ''}`,
     autoSize: { minRows: 1, maxRows: 4 },
+    ...restTextAreaProps,
   };
 
   if (component === 'textarea') {
@@ -74,7 +79,7 @@ export function InlineEditInputFactory({
       <div className={`inline-edit__wrapper inline-edit__textarea-wrapper ${isChanged ? 'has-suffix' : ''}`}>
         <Input.TextArea
           {...commonProps}
-          {...textAreaProps}
+          {...parsedTextAreaProps}
         />
         <InputSuffix
           component="textarea"

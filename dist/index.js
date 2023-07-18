@@ -50,6 +50,41 @@ function _iterableToArrayLimit$1(arr, i) {
     return _arr;
   }
 }
+function ownKeys$1(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread2$1(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) {
+      _defineProperty$1(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
+function _defineProperty$1(obj, key, value) {
+  key = _toPropertyKey$1(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -63,6 +98,33 @@ function _extends() {
     return target;
   };
   return _extends.apply(this, arguments);
+}
+function _objectWithoutPropertiesLoose$1(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+function _objectWithoutProperties$1(source, excluded) {
+  if (source == null) return {};
+  var target = _objectWithoutPropertiesLoose$1(source, excluded);
+  var key, i;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+  return target;
 }
 function _taggedTemplateLiteral(strings, raw) {
   if (!raw) {
@@ -95,6 +157,20 @@ function _arrayLikeToArray$1(arr, len) {
 }
 function _nonIterableRest$1() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _toPrimitive$1(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function _toPropertyKey$1(arg) {
+  var key = _toPrimitive$1(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
 }
 
 var IconContext = /*#__PURE__*/React.createContext({});
@@ -1345,7 +1421,7 @@ var useInsertStyles = function useInsertStyles() {
   }, []);
 };
 
-var _excluded$1 = ["icon", "className", "onClick", "style", "primaryColor", "secondaryColor"];
+var _excluded$2 = ["icon", "className", "onClick", "style", "primaryColor", "secondaryColor"];
 var twoToneColorPalette = {
   primaryColor: '#333',
   secondaryColor: '#E6E6E6',
@@ -1368,7 +1444,7 @@ var IconBase = function IconBase(props) {
     style = props.style,
     primaryColor = props.primaryColor,
     secondaryColor = props.secondaryColor,
-    restProps = _objectWithoutProperties(props, _excluded$1);
+    restProps = _objectWithoutProperties(props, _excluded$2);
   var colors = twoToneColorPalette;
   if (primaryColor) {
     colors = {
@@ -1421,7 +1497,7 @@ function getTwoToneColor() {
   return [colors.primaryColor, colors.secondaryColor];
 }
 
-var _excluded = ["className", "icon", "spin", "rotate", "tabIndex", "onClick", "twoToneColor"];
+var _excluded$1 = ["className", "icon", "spin", "rotate", "tabIndex", "onClick", "twoToneColor"];
 // Initial setting
 // should move it to antd main repo?
 setTwoToneColor('#1890ff');
@@ -1434,7 +1510,7 @@ var Icon = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
     tabIndex = props.tabIndex,
     onClick = props.onClick,
     twoToneColor = props.twoToneColor,
-    restProps = _objectWithoutProperties(props, _excluded);
+    restProps = _objectWithoutProperties(props, _excluded$1);
   var _React$useContext = React__namespace.useContext(Context),
     _React$useContext$pre = _React$useContext.prefixCls,
     prefixCls = _React$useContext$pre === void 0 ? 'anticon' : _React$useContext$pre,
@@ -1620,6 +1696,8 @@ function InputSuffix(_ref) {
   return renderIcon();
 }
 
+var _excluded = ["className"];
+
 /**
  * Factory function to create an input / textarea component
  *
@@ -1631,6 +1709,7 @@ function InputSuffix(_ref) {
  * @param {Function} onUndoClick - callback function to reset value to default
  * @param {Object} inputRef - ref to input
  * @param {Number} maxLength - max length of input
+ * @param {Object} textAreaProps - props to override antd's Input.TextArea
  * @returns {ReactDOM}
  */
 function InlineEditInputFactory(_ref) {
@@ -1646,7 +1725,9 @@ function InlineEditInputFactory(_ref) {
     _ref$onUndoClick = _ref.onUndoClick,
     onUndoClick = _ref$onUndoClick === void 0 ? function () {} : _ref$onUndoClick,
     inputRef = _ref.inputRef,
-    maxLength = _ref.maxLength;
+    maxLength = _ref.maxLength,
+    _ref$textAreaProps = _ref.textAreaProps,
+    textAreaProps = _ref$textAreaProps === void 0 ? {} : _ref$textAreaProps;
   var onInputSave = function onInputSave(e) {
     var text = e.target.value;
     onSave(text || defaultLabel);
@@ -1684,17 +1765,19 @@ function InlineEditInputFactory(_ref) {
       onSaveClick: onInputSave
     })
   };
-  var textAreaProps = {
-    className: "inline-edit__input textarea-component ".concat(isChanged ? 'has-suffix' : ''),
+  var className = textAreaProps.className,
+    restTextAreaProps = _objectWithoutProperties$1(textAreaProps, _excluded);
+  var parsedTextAreaProps = _objectSpread2$1({
+    className: "inline-edit__input textarea-component ".concat(isChanged ? 'has-suffix' : '', " ").concat(className || ''),
     autoSize: {
       minRows: 1,
       maxRows: 4
     }
-  };
+  }, restTextAreaProps);
   if (component === 'textarea') {
     return /*#__PURE__*/React.createElement("div", {
       className: "inline-edit__wrapper inline-edit__textarea-wrapper ".concat(isChanged ? 'has-suffix' : '')
-    }, /*#__PURE__*/React.createElement(antd.Input.TextArea, _extends({}, commonProps, textAreaProps)), /*#__PURE__*/React.createElement(InputSuffix, {
+    }, /*#__PURE__*/React.createElement(antd.Input.TextArea, _extends({}, commonProps, parsedTextAreaProps)), /*#__PURE__*/React.createElement(InputSuffix, {
       component: "textarea",
       isChanged: isChanged,
       onUndoClick: onUndoClick,
@@ -1711,7 +1794,7 @@ var _templateObject$2;
 var InlineEditInputFactoryStyles = styled.css(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n   /* .has-suffix { */\n    .inline-edit__input {\n        padding-right: 20px;\n    }\n\n   /* } */\n"])));
 
 var _templateObject$1;
-var InputSuffixStyles = styled.css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n\n    .inline-edit__suffix-container {\n        position: absolute;\n        top: 6px;\n        right: 16px;\n\n        .anticon {\n            font-size: 14px;\n        }\n\n        .anticon:not(:first-child) {\n            margin-left: 8px;\n        }\n    }\n\n    .inline-edit__input {\n        .inline-edit__suffix-container {\n            position: relative;\n            top: 0;\n            right: 0;\n        }\n    }\n\n    /* #inline-edit__undo-button {\n        position: absolute;\n        top: 8px;\n        right: 8px;\n        font-size: 14px;\n    } */\n"])));
+var InputSuffixStyles = styled.css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n\n    .inline-edit__suffix-container {\n        position: absolute;\n        top: 6px;\n        right: 16px;\n        z-index: 1;\n\n        .anticon {\n            font-size: 14px;\n        }\n\n        .anticon:not(:first-child) {\n            margin-left: 8px;\n        }\n    }\n\n    .inline-edit__input {\n        .inline-edit__suffix-container {\n            position: relative;\n            top: 0;\n            right: 0;\n        }\n    }\n\n    /* #inline-edit__undo-button {\n        position: absolute;\n        top: 8px;\n        right: 8px;\n        font-size: 14px;\n    } */\n"])));
 
 var _templateObject;
 var StyledWrapper = styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  ", "\n  ", "\n  ", "\n"])), InputSuffixStyles, InlineEditInputFactoryStyles, InlineEditDisplayStyles);
@@ -1744,6 +1827,7 @@ function StyleWrapper(_ref) {
  * @param {String} inputComponent - 'input' or 'textarea'
  * @param {Boolean} startWithEditViewOpen - whether to start with edit view open (default: false)
  * @param {String} displayPlaceholder - placeholder for display view when value is empty
+ * @param {Object} textAreaProps - props to override antd's Input.TextArea
  * @returns {ReactDOM}
  */
 function InlineEdit(_ref) {
@@ -1762,7 +1846,9 @@ function InlineEdit(_ref) {
     _ref$startWithEditVie = _ref.startWithEditViewOpen,
     startWithEditViewOpen = _ref$startWithEditVie === void 0 ? false : _ref$startWithEditVie,
     _ref$displayPlacehold = _ref.displayPlaceholder,
-    displayPlaceholder = _ref$displayPlacehold === void 0 ? globals.DEFAULT_PLACEHOLDER : _ref$displayPlacehold;
+    displayPlaceholder = _ref$displayPlacehold === void 0 ? globals.DEFAULT_PLACEHOLDER : _ref$displayPlacehold,
+    _ref$textAreaProps = _ref.textAreaProps,
+    textAreaProps = _ref$textAreaProps === void 0 ? {} : _ref$textAreaProps;
   var _useState = React.useState(startWithEditViewOpen),
     _useState2 = _slicedToArray$1(_useState, 2),
     isEditing = _useState2[0],
@@ -1812,7 +1898,8 @@ function InlineEdit(_ref) {
     inputRef: inputRef,
     onUndoClick: onUndoClick,
     maxLength: maxLength,
-    component: inputComponent
+    component: inputComponent,
+    textAreaProps: textAreaProps
   }));
   var displayDOM = /*#__PURE__*/React.createElement(InlineEditDisplay, {
     onClick: function onClick() {

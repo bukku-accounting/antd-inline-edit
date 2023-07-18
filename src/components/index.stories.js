@@ -47,3 +47,17 @@ export const InlineEditDisplayRenderer = {
     displayRenderer: (label) => (<h2>{label}</h2>),
   },
 };
+
+export const InlineEditTextAreaProps = {
+  args: {
+    displayRenderer: (label) => (<h2>{label}</h2>),
+    // onSave: mockOnSave,
+    inputComponent: 'textarea',
+    startWithEditViewOpen: true,
+    textAreaProps: {
+      className: 'henlooo',
+      autoSize: { minRows: 2, maxRows: 6 },
+      showCount: true,
+    },
+  },
+};
