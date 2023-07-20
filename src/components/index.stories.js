@@ -61,3 +61,15 @@ export const InlineEditTextAreaProps = {
     },
   },
 };
+
+export const InlineEditTextAreaSaveOnPressEnter = {
+  args: {
+    displayRenderer: (label) => (<h2>{label}</h2>),
+    // onSave: mockOnSave,
+    inputComponent: 'textarea',
+    startWithEditViewOpen: true,
+    textAreaProps: {
+      onPressEnter: () => { console.log('onPressEnter'); },
+    },
+  },
+};

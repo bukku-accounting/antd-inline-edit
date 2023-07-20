@@ -1676,7 +1676,7 @@ function InputSuffix(_ref) {
   return renderIcon();
 }
 
-var _excluded = ["className"];
+var _excluded = ["className", "onPressEnter"];
 
 /**
  * Factory function to create an input / textarea component
@@ -1708,8 +1708,11 @@ function InlineEditInputFactory(_ref) {
     maxLength = _ref.maxLength,
     _ref$textAreaProps = _ref.textAreaProps,
     textAreaProps = _ref$textAreaProps === void 0 ? {} : _ref$textAreaProps;
-  var onInputSave = function onInputSave(e) {
+  var onInputSave = function onInputSave(e, onPressEnterFn) {
     var text = e.target.value;
+    if (onPressEnterFn) {
+      onPressEnterFn(e);
+    }
     onSave(text || defaultLabel);
   };
   var isChanged = label !== defaultLabel;
@@ -1746,13 +1749,17 @@ function InlineEditInputFactory(_ref) {
     })
   };
   var className = textAreaProps.className,
+    textAreaOnPressEnter = textAreaProps.onPressEnter,
     restTextAreaProps = _objectWithoutProperties$1(textAreaProps, _excluded);
   var parsedTextAreaProps = _objectSpread2$1({
     className: "inline-edit__input textarea-component ".concat(isChanged ? 'has-suffix' : '', " ").concat(className || ''),
     autoSize: {
       minRows: 1,
       maxRows: 4
-    }
+    },
+    onPressEnter: textAreaOnPressEnter ? function (e) {
+      return onInputSave(e, textAreaOnPressEnter);
+    } : null
   }, restTextAreaProps);
   if (component === 'textarea') {
     return /*#__PURE__*/React__default.createElement("div", {
@@ -1771,7 +1778,7 @@ var _templateObject$3;
 var InlineEditDisplayStyles = css(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n    .inline-edit__display {\n        white-space: pre-wrap;\n    }\n"])));
 
 var _templateObject$2;
-var InlineEditInputFactoryStyles = css(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n   /* .has-suffix { */\n    .inline-edit__input {\n        padding-right: 20px;\n    }\n\n   /* } */\n"])));
+var InlineEditInputFactoryStyles = css(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n   /* .has-suffix { */\n    /* .inline-edit__input {\n        padding-right: 20px;\n    } */\n\n   /* } */\n"])));
 
 var _templateObject$1;
 var InputSuffixStyles = css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n\n    .inline-edit__suffix-container {\n        position: absolute;\n        top: 6px;\n        right: 16px;\n        z-index: 1;\n\n        .anticon {\n            font-size: 14px;\n        }\n\n        .anticon:not(:first-child) {\n            margin-left: 8px;\n        }\n    }\n\n    .inline-edit__input {\n        .inline-edit__suffix-container {\n            position: relative;\n            top: 0;\n            right: 0;\n        }\n    }\n\n    /* #inline-edit__undo-button {\n        position: absolute;\n        top: 8px;\n        right: 8px;\n        font-size: 14px;\n    } */\n"])));

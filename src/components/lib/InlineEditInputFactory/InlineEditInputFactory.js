@@ -28,8 +28,9 @@ export function InlineEditInputFactory({
   maxLength,
   textAreaProps = {},
 }) {
-  const onInputSave = (e) => {
+  const onInputSave = (e, onPressEnterFn) => {
     const text = e.target.value;
+    if (onPressEnterFn) { onPressEnterFn(e); }
     onSave(text || defaultLabel);
   };
 
@@ -67,10 +68,11 @@ export function InlineEditInputFactory({
     />,
   };
 
-  const { className, ...restTextAreaProps } = textAreaProps;
+  const { className, onPressEnter: textAreaOnPressEnter, ...restTextAreaProps } = textAreaProps;
   const parsedTextAreaProps = {
     className: `inline-edit__input textarea-component ${isChanged ? 'has-suffix' : ''} ${className || ''}`,
     autoSize: { minRows: 1, maxRows: 4 },
+    onPressEnter: textAreaOnPressEnter ? (e) => onInputSave(e, textAreaOnPressEnter) : null,
     ...restTextAreaProps,
   };
 

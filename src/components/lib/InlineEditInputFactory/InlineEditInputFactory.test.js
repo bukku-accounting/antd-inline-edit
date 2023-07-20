@@ -12,8 +12,10 @@ const mockOnSave = jest.fn();
 const mockOnUndo = jest.fn();
 
 function Wrapper(props) {
-  const [value, setValue] = useState(null);
-  const { defaultLabel, onUndoClick } = props;
+  const {
+    label, defaultLabel, onUndoClick, ...restProps
+  } = props;
+  const [value, setValue] = useState(label);
   return (
     <InlineEditInputFactory
       label={value}
@@ -27,6 +29,7 @@ function Wrapper(props) {
         if (onUndoClick) { onUndoClick(); }
       }}
       defaultLabel={defaultLabel}
+      {...restProps}
     />
   );
 }
@@ -98,9 +101,13 @@ describe('InlineEditInputFactory', () => {
       expect(inputDOM.value).toBe('user typed something');
     });
 
-    test('should call onSave onPressEnter', async () => {
+    test('Input - should call onSave onPressEnter', async () => {
+      const mockFn = jest.fn();
+
       render(
-        <Wrapper />,
+        <Wrapper
+          onSave={mockFn}
+        />,
       );
       // fireEvent.change(inputDOM, { target: { value: 'test input value' } });
       const inputDOM = document.querySelector('.inline-edit__input.input-component .ant-input');
@@ -110,7 +117,52 @@ describe('InlineEditInputFactory', () => {
       fireEvent.keyDown(inputDOM, { key: 'Enter', code: 13, charCode: 13 });
 
       expect(mockSetState).toHaveBeenCalled();
-      expect(mockOnSave).toHaveBeenCalled();
+      expect(mockFn).toHaveBeenCalled();
+      expect(inputDOM.value).toBe('user typed something and press enter');
+    });
+
+    test('Textarea - should call onSave onPressEnter if has textAreaProps.onPressEnter', async () => {
+      const mockFn = jest.fn();
+
+      render(
+        <Wrapper
+          component="textarea"
+          onSave={mockFn}
+          textAreaProps={{
+            onPressEnter: (e) => { console.log('onPressEnter', e.target.value); },
+          }}
+        />,
+      );
+      // fireEvent.change(inputDOM, { target: { value: 'test input value' } });
+      const inputDOM = document.querySelector('.inline-edit__input.textarea-component');
+      act(() => {
+        userEvent.type(inputDOM, 'user typed something and press enter');
+      });
+      fireEvent.keyDown(inputDOM, { key: 'Enter', code: 13, charCode: 13 });
+
+      expect(mockSetState).toHaveBeenCalled();
+      expect(mockFn).toHaveBeenCalled();
+      expect(inputDOM.value).toBe('user typed something and press enter');
+    });
+
+    test('Textarea - should not call onSave onPressEnter if no textAreaProps.onPressEnter', async () => {
+      const mockFn = jest.fn();
+
+      render(
+        <Wrapper
+          component="textarea"
+          onSave={mockFn}
+        />,
+      );
+      // fireEvent.change(inputDOM, { target: { value: 'test input value' } });
+      const inputDOM = document.querySelector('.inline-edit__input.textarea-component');
+      act(() => {
+        userEvent.type(inputDOM, 'user typed something and press enter');
+      });
+      fireEvent.keyDown(inputDOM, { key: 'Enter', code: 13, charCode: 13 });
+
+      // expect(mockSetState).toHaveBeenCalled();
+      expect(mockFn).not.toHaveBeenCalled();
       expect(inputDOM.value).toBe('user typed something and press enter');
     });
   });
