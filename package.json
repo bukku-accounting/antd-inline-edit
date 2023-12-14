@@ -38,7 +38,7 @@
     "@storybook/react": "^7.0.7",
     "@storybook/react-webpack5": "^7.0.7",
     "@storybook/testing-library": "^0.0.14-next.2",
-    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "antd": "^5.4.6",
@@ -74,6 +74,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/erictehyc/antd-inline-edit.git"
+    "url": "git+https://github.com/bukku-accounting/antd-inline-edit.git"
   }
 }
