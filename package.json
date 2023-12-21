@@ -1,6 +1,6 @@
 {
   "name": "@bukku-accounting/antd-inline-edit",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "An inline edit displays a custom input component that switches between reading and editing on the same page.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
