@@ -1,7 +1,27 @@
-import * as React from 'react';
-import React__default, { createContext, useContext, useEffect, useState, useRef } from 'react';
-import { Typography, Tooltip, Input } from 'antd';
-import styled, { css } from 'styled-components';
+'use strict';
+
+var React = require('react');
+var antd = require('antd');
+var styled = require('styled-components');
+
+function _interopNamespaceDefault(e) {
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () { return e[k]; }
+        });
+      }
+    });
+  }
+  n.default = e;
+  return Object.freeze(n);
+}
+
+var React__namespace = /*#__PURE__*/_interopNamespaceDefault(React);
 
 function _iterableToArrayLimit$1(r, l) {
   var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
@@ -153,7 +173,7 @@ function _nonIterableRest$1() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var IconContext = /*#__PURE__*/createContext({});
+var IconContext = /*#__PURE__*/React.createContext({});
 var Context = IconContext;
 
 function _typeof(obj) {
@@ -1361,13 +1381,13 @@ function normalizeAttrs() {
 }
 function generate(node, key, rootProps) {
   if (!rootProps) {
-    return /*#__PURE__*/React__default.createElement(node.tag, _objectSpread2({
+    return /*#__PURE__*/React.createElement(node.tag, _objectSpread2({
       key: key
     }, normalizeAttrs(node.attrs)), (node.children || []).map(function (child, index) {
       return generate(child, "".concat(key, "-").concat(node.tag, "-").concat(index));
     }));
   }
-  return /*#__PURE__*/React__default.createElement(node.tag, _objectSpread2(_objectSpread2({
+  return /*#__PURE__*/React.createElement(node.tag, _objectSpread2(_objectSpread2({
     key: key
   }, normalizeAttrs(node.attrs)), rootProps), (node.children || []).map(function (child, index) {
     return generate(child, "".concat(key, "-").concat(node.tag, "-").concat(index));
@@ -1386,14 +1406,14 @@ function normalizeTwoToneColors(twoToneColor) {
 var iconStyles = "\n.anticon {\n  display: inline-block;\n  color: inherit;\n  font-style: normal;\n  line-height: 0;\n  text-align: center;\n  text-transform: none;\n  vertical-align: -0.125em;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.anticon > * {\n  line-height: 1;\n}\n\n.anticon svg {\n  display: inline-block;\n}\n\n.anticon::before {\n  display: none;\n}\n\n.anticon .anticon-icon {\n  display: block;\n}\n\n.anticon[tabindex] {\n  cursor: pointer;\n}\n\n.anticon-spin::before,\n.anticon-spin {\n  display: inline-block;\n  -webkit-animation: loadingCircle 1s infinite linear;\n  animation: loadingCircle 1s infinite linear;\n}\n\n@-webkit-keyframes loadingCircle {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes loadingCircle {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n";
 var useInsertStyles = function useInsertStyles() {
   var styleStr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : iconStyles;
-  var _useContext = useContext(Context),
+  var _useContext = React.useContext(Context),
     csp = _useContext.csp,
     prefixCls = _useContext.prefixCls;
   var mergedStyleStr = styleStr;
   if (prefixCls) {
     mergedStyleStr = mergedStyleStr.replace(/anticon/g, prefixCls);
   }
-  useEffect(function () {
+  React.useEffect(function () {
     updateCSS(mergedStyleStr, '@ant-design-icons', {
       prepend: true,
       csp: csp
@@ -1481,7 +1501,7 @@ var _excluded$1 = ["className", "icon", "spin", "rotate", "tabIndex", "onClick",
 // Initial setting
 // should move it to antd main repo?
 setTwoToneColor('#1890ff');
-var Icon = /*#__PURE__*/React.forwardRef(function (props, ref) {
+var Icon = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
   var _classNames;
   var className = props.className,
     icon = props.icon,
@@ -1491,7 +1511,7 @@ var Icon = /*#__PURE__*/React.forwardRef(function (props, ref) {
     onClick = props.onClick,
     twoToneColor = props.twoToneColor,
     restProps = _objectWithoutProperties(props, _excluded$1);
-  var _React$useContext = React.useContext(Context),
+  var _React$useContext = React__namespace.useContext(Context),
     _React$useContext$pre = _React$useContext.prefixCls,
     prefixCls = _React$useContext$pre === void 0 ? 'anticon' : _React$useContext$pre,
     rootClassName = _React$useContext.rootClassName;
@@ -1508,7 +1528,7 @@ var Icon = /*#__PURE__*/React.forwardRef(function (props, ref) {
     _normalizeTwoToneColo2 = _slicedToArray(_normalizeTwoToneColo, 2),
     primaryColor = _normalizeTwoToneColo2[0],
     secondaryColor = _normalizeTwoToneColo2[1];
-  return /*#__PURE__*/React.createElement("span", _objectSpread2(_objectSpread2({
+  return /*#__PURE__*/React__namespace.createElement("span", _objectSpread2(_objectSpread2({
     role: "img",
     "aria-label": icon.name
   }, restProps), {}, {
@@ -1516,7 +1536,7 @@ var Icon = /*#__PURE__*/React.forwardRef(function (props, ref) {
     tabIndex: iconTabIndex,
     onClick: onClick,
     className: classString
-  }), /*#__PURE__*/React.createElement(ReactIcon, {
+  }), /*#__PURE__*/React__namespace.createElement(ReactIcon, {
     icon: icon,
     primaryColor: primaryColor,
     secondaryColor: secondaryColor,
@@ -1533,37 +1553,37 @@ var CheckOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896
 var CheckOutlinedSvg = CheckOutlined$2;
 
 var CheckOutlined = function CheckOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(AntdIcon, _objectSpread2(_objectSpread2({}, props), {}, {
+  return /*#__PURE__*/React__namespace.createElement(AntdIcon, _objectSpread2(_objectSpread2({}, props), {}, {
     ref: ref,
     icon: CheckOutlinedSvg
   }));
 };
 CheckOutlined.displayName = 'CheckOutlined';
-var CheckOutlined$1 = /*#__PURE__*/React.forwardRef(CheckOutlined);
+var CheckOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(CheckOutlined);
 
 // This icon file is generated automatically.
 var UndoOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M511.4 124C290.5 124.3 112 303 112 523.9c0 128 60.2 242 153.8 315.2l-37.5 48c-4.1 5.3-.3 13 6.3 12.9l167-.8c5.2 0 9-4.9 7.7-9.9L369.8 727a8 8 0 00-14.1-3L315 776.1c-10.2-8-20-16.7-29.3-26a318.64 318.64 0 01-68.6-101.7C200.4 609 192 567.1 192 523.9s8.4-85.1 25.1-124.5c16.1-38.1 39.2-72.3 68.6-101.7 29.4-29.4 63.6-52.5 101.7-68.6C426.9 212.4 468.8 204 512 204s85.1 8.4 124.5 25.1c38.1 16.1 72.3 39.2 101.7 68.6 29.4 29.4 52.5 63.6 68.6 101.7 16.7 39.4 25.1 81.3 25.1 124.5s-8.4 85.1-25.1 124.5a318.64 318.64 0 01-68.6 101.7c-7.5 7.5-15.3 14.5-23.4 21.2a7.93 7.93 0 00-1.2 11.1l39.4 50.5c2.8 3.5 7.9 4.1 11.4 1.3C854.5 760.8 912 649.1 912 523.9c0-221.1-179.4-400.2-400.6-399.9z" } }] }, "name": "undo", "theme": "outlined" };
 var UndoOutlinedSvg = UndoOutlined$2;
 
 var UndoOutlined = function UndoOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(AntdIcon, _objectSpread2(_objectSpread2({}, props), {}, {
+  return /*#__PURE__*/React__namespace.createElement(AntdIcon, _objectSpread2(_objectSpread2({}, props), {}, {
     ref: ref,
     icon: UndoOutlinedSvg
   }));
 };
 UndoOutlined.displayName = 'UndoOutlined';
-var UndoOutlined$1 = /*#__PURE__*/React.forwardRef(UndoOutlined);
+var UndoOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(UndoOutlined);
 
 var Globals = {
   DEFAULT_PLACEHOLDER: 'Click to edit',
   DEFAULT_UNDO_TOOLTIP_TEXT: 'Undo',
   DEFAULT_SAVE_TOOLTIP_TEXT: 'Save',
-  DEFAULT_UNDO_ICON: /*#__PURE__*/React__default.createElement(UndoOutlined$1, null),
+  DEFAULT_UNDO_ICON: /*#__PURE__*/React.createElement(UndoOutlined$1, null),
   DEFAULT_INPUT_MAX_LENGTH: 155
 };
 var globals = Object.freeze(Globals);
 
-var Text = Typography.Text;
+var Text = antd.Typography.Text;
 function InlineEditDisplay(_ref) {
   var onClick = _ref.onClick,
     label = _ref.label,
@@ -1577,13 +1597,13 @@ function InlineEditDisplay(_ref) {
 
     var displayDOM = displayRenderer(label, placeholder);
     if (displayRenderer.length === 1 && !label) {
-      displayDOM = /*#__PURE__*/React__default.createElement(DisplayPlaceholder, {
+      displayDOM = /*#__PURE__*/React.createElement(DisplayPlaceholder, {
         onClick: onClick,
         placeholder: placeholder
       });
     }
     if (typeof displayDOM === 'string') {
-      return /*#__PURE__*/React__default.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         onClick: onClick,
         className: "inline-edit__display",
         role: "textbox",
@@ -1592,9 +1612,9 @@ function InlineEditDisplay(_ref) {
     }
 
     // append classNames
-    if ( /*#__PURE__*/React__default.isValidElement(displayDOM)) {
+    if ( /*#__PURE__*/React.isValidElement(displayDOM)) {
       var _displayDOM;
-      return /*#__PURE__*/React__default.cloneElement(displayDOM, {
+      return /*#__PURE__*/React.cloneElement(displayDOM, {
         className: "".concat(((_displayDOM = displayDOM) === null || _displayDOM === void 0 || (_displayDOM = _displayDOM.props) === null || _displayDOM === void 0 ? void 0 : _displayDOM.className) || '', " inline-edit__display"),
         onClick: onClick
       });
@@ -1603,7 +1623,7 @@ function InlineEditDisplay(_ref) {
     // return <DisplayPlaceholder onClick={onClick} placeholder={placeholder} />;
   }
   if (label) {
-    return /*#__PURE__*/React__default.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       onClick: onClick,
       className: "inline-edit__display label",
       role: "textbox",
@@ -1612,7 +1632,7 @@ function InlineEditDisplay(_ref) {
   }
 
   // render placeholder label -- Click to edit
-  return /*#__PURE__*/React__default.createElement(DisplayPlaceholder, {
+  return /*#__PURE__*/React.createElement(DisplayPlaceholder, {
     onClick: onClick,
     placeholder: placeholder
   });
@@ -1620,7 +1640,7 @@ function InlineEditDisplay(_ref) {
 function DisplayPlaceholder(_ref2) {
   var onClick = _ref2.onClick,
     placeholder = _ref2.placeholder;
-  return /*#__PURE__*/React__default.createElement(Text, {
+  return /*#__PURE__*/React.createElement(Text, {
     onClick: onClick,
     type: "secondary",
     className: "inline-edit__display placeholder"
@@ -1634,13 +1654,13 @@ function InputSuffix(_ref) {
     onSaveClick = _ref.onSaveClick,
     _ref$component = _ref.component,
     component = _ref$component === void 0 ? 'input' : _ref$component;
-  if (icon && ! /*#__PURE__*/React__default.isValidElement(icon)) {
+  if (icon && ! /*#__PURE__*/React.isValidElement(icon)) {
     throw new Error('Invalid icon prop: icon must be a valid React element.');
   }
   var renderIcon = function renderIcon() {
     if (icon) {
       var className = icon.props.className;
-      return /*#__PURE__*/React__default.cloneElement(icon, {
+      return /*#__PURE__*/React.cloneElement(icon, {
         id: 'inline-edit__undo-button',
         className: "".concat(className, " inline-edit input-suffix--").concat(component, " ").concat(isChanged ? '' : 'display-none'),
         onClick: onUndoClick
@@ -1648,19 +1668,19 @@ function InputSuffix(_ref) {
     }
     var suffixIcons = [];
     if (onSaveClick) {
-      suffixIcons.push( /*#__PURE__*/React__default.createElement(Tooltip, {
+      suffixIcons.push( /*#__PURE__*/React.createElement(antd.Tooltip, {
         title: globals.DEFAULT_SAVE_TOOLTIP_TEXT,
         key: "save"
-      }, /*#__PURE__*/React__default.createElement(CheckOutlined$1, {
+      }, /*#__PURE__*/React.createElement(CheckOutlined$1, {
         id: "inline-edit__save-button",
         onClick: onSaveClick
       })));
     }
     if (onUndoClick) {
-      suffixIcons.push( /*#__PURE__*/React__default.createElement(Tooltip, {
+      suffixIcons.push( /*#__PURE__*/React.createElement(antd.Tooltip, {
         title: globals.DEFAULT_UNDO_TOOLTIP_TEXT,
         key: "undo"
-      }, /*#__PURE__*/React__default.createElement(UndoOutlined$1, {
+      }, /*#__PURE__*/React.createElement(UndoOutlined$1, {
         id: "inline-edit__undo-button",
         className: "inline-edit input-suffix--".concat(component, " ").concat(isChanged ? '' : 'display-none'),
         onClick: onUndoClick
@@ -1668,7 +1688,7 @@ function InputSuffix(_ref) {
     }
 
     // undo button
-    return /*#__PURE__*/React__default.createElement("span", {
+    return /*#__PURE__*/React.createElement("span", {
       className: "inline-edit__suffix-container"
     }, suffixIcons);
   };
@@ -1740,7 +1760,7 @@ function InlineEditInputFactory(_ref) {
   var inputProps = {
     className: "inline-edit__input input-component ".concat(isChanged ? 'has-suffix' : ''),
     onPressEnter: onInputSave,
-    suffix: /*#__PURE__*/React__default.createElement(InputSuffix, {
+    suffix: /*#__PURE__*/React.createElement(InputSuffix, {
       isChanged: isChanged,
       onUndoClick: onUndoClick,
       onSaveClick: onInputSave
@@ -1760,32 +1780,32 @@ function InlineEditInputFactory(_ref) {
     } : null
   }, restTextAreaProps);
   if (component === 'textarea') {
-    return /*#__PURE__*/React__default.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "inline-edit__wrapper inline-edit__textarea-wrapper ".concat(isChanged ? 'has-suffix' : '')
-    }, /*#__PURE__*/React__default.createElement(Input.TextArea, _extends({}, commonProps, parsedTextAreaProps)), /*#__PURE__*/React__default.createElement(InputSuffix, {
+    }, /*#__PURE__*/React.createElement(antd.Input.TextArea, _extends({}, commonProps, parsedTextAreaProps)), /*#__PURE__*/React.createElement(InputSuffix, {
       component: "textarea",
       isChanged: isChanged,
       onUndoClick: onUndoClick,
       onSaveClick: onInputSave
     }));
   }
-  return /*#__PURE__*/React__default.createElement(Input, _extends({}, commonProps, inputProps));
+  return /*#__PURE__*/React.createElement(antd.Input, _extends({}, commonProps, inputProps));
 }
 
 var _templateObject$3;
-var InlineEditDisplayStyles = css(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n    .inline-edit__display {\n        white-space: pre-wrap;\n    }\n"])));
+var InlineEditDisplayStyles = styled.css(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n    .inline-edit__display {\n        white-space: pre-wrap;\n    }\n"])));
 
 var _templateObject$2;
-var InlineEditInputFactoryStyles = css(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n   /* .has-suffix { */\n    /* .inline-edit__input {\n        padding-right: 20px;\n    } */\n\n   /* } */\n"])));
+var InlineEditInputFactoryStyles = styled.css(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n   /* .has-suffix { */\n    /* .inline-edit__input {\n        padding-right: 20px;\n    } */\n\n   /* } */\n"])));
 
 var _templateObject$1;
-var InputSuffixStyles = css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n\n    .inline-edit__suffix-container {\n        position: absolute;\n        top: 6px;\n        right: 16px;\n        z-index: 1;\n\n        .anticon {\n            font-size: 14px;\n        }\n\n        .anticon:not(:first-child) {\n            margin-left: 8px;\n        }\n    }\n\n    .inline-edit__input {\n        .inline-edit__suffix-container {\n            position: relative;\n            top: 0;\n            right: 0;\n        }\n    }\n\n    /* #inline-edit__undo-button {\n        position: absolute;\n        top: 8px;\n        right: 8px;\n        font-size: 14px;\n    } */\n"])));
+var InputSuffixStyles = styled.css(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n    .display-none {\n        display: none;\n    }\n\n    .textarea-component {\n        white-space: pre-wrap;\n    }\n\n    .inline-edit__textarea-wrapper {\n        position: relative;\n    }\n\n    .inline-edit__suffix-container {\n        position: absolute;\n        top: 6px;\n        right: 16px;\n        z-index: 1;\n\n        .anticon {\n            font-size: 14px;\n        }\n\n        .anticon:not(:first-child) {\n            margin-left: 8px;\n        }\n    }\n\n    .inline-edit__input {\n        .inline-edit__suffix-container {\n            position: relative;\n            top: 0;\n            right: 0;\n        }\n    }\n\n    /* #inline-edit__undo-button {\n        position: absolute;\n        top: 8px;\n        right: 8px;\n        font-size: 14px;\n    } */\n"])));
 
 var _templateObject;
 var StyledWrapper = styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  ", "\n  ", "\n  ", "\n"])), InputSuffixStyles, InlineEditInputFactoryStyles, InlineEditDisplayStyles);
 function StyleWrapper(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React__default.createElement(StyledWrapper, {
+  return /*#__PURE__*/React.createElement(StyledWrapper, {
     className: "style-wrapper"
   }, children);
 }
@@ -1834,25 +1854,25 @@ function InlineEdit(_ref) {
     displayPlaceholder = _ref$displayPlacehold === void 0 ? globals.DEFAULT_PLACEHOLDER : _ref$displayPlacehold,
     _ref$textAreaProps = _ref.textAreaProps,
     textAreaProps = _ref$textAreaProps === void 0 ? {} : _ref$textAreaProps;
-  var _useState = useState(startWithEditViewOpen),
+  var _useState = React.useState(startWithEditViewOpen),
     _useState2 = _slicedToArray$1(_useState, 2),
     isEditing = _useState2[0],
     setIsEditing = _useState2[1];
-  var _useState3 = useState(initialValue),
+  var _useState3 = React.useState(initialValue),
     _useState4 = _slicedToArray$1(_useState3, 2),
     label = _useState4[0],
     setLabel = _useState4[1];
-  var inputRef = useRef();
+  var inputRef = React.useRef();
   // const [form] = useForm();
 
   // to deal with i18n related changes in initialValue
-  useEffect(function () {
+  React.useEffect(function () {
     setLabel(initialValue);
     return function () {};
   }, [initialValue]);
 
   // to autofocus on input when first click
-  useEffect(function () {
+  React.useEffect(function () {
     if (isEditing && inputRef.current) {
       inputRef.current.focus({
         cursor: 'all'
@@ -1872,9 +1892,9 @@ function InlineEdit(_ref) {
 
   // INPUT: to save on enter / blur
   // Factory to create different input types (input / textarea)
-  var editDOM = /*#__PURE__*/React__default.createElement("div", {
+  var editDOM = /*#__PURE__*/React.createElement("div", {
     className: "inline-edit__input-wrapper"
-  }, /*#__PURE__*/React__default.createElement(InlineEditInputFactory, {
+  }, /*#__PURE__*/React.createElement(InlineEditInputFactory, {
     label: label,
     initialLabel: initialValue,
     defaultLabel: defaultValue,
@@ -1886,7 +1906,7 @@ function InlineEdit(_ref) {
     component: inputComponent,
     textAreaProps: textAreaProps
   }));
-  var displayDOM = /*#__PURE__*/React__default.createElement(InlineEditDisplay, {
+  var displayDOM = /*#__PURE__*/React.createElement(InlineEditDisplay, {
     onClick: function onClick() {
       setIsEditing(true);
     },
@@ -1896,7 +1916,7 @@ function InlineEdit(_ref) {
   });
 
   // DISPLAY: to display the value
-  return /*#__PURE__*/React__default.createElement(StyleWrapper, null, isEditing ? editDOM : displayDOM);
+  return /*#__PURE__*/React.createElement(StyleWrapper, null, isEditing ? editDOM : displayDOM);
 }
 
-export { InlineEdit };
+exports.InlineEdit = InlineEdit;
