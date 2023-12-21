@@ -20,12 +20,12 @@ The Antd Inline Edit component is a React component that provides an inline edit
 You can install the Antd Inline Edit component using npm:
 
 ```bash
-npm install antd-inline-edit
+npm install @bukku-accounting/antd-inline-edit
 ```
 
 or yarn:
 ```bash
-yarn add antd-inline-edit
+yarn add @bukku-accounting/antd-inline-edit
 ```
 
 ## Usage
