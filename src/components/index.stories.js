@@ -17,6 +17,7 @@ export const InlineEditInput = {
   args: {
     initialValue: 'Hello World - Input',
     inputComponent: 'input',
+    maxLength: 100,
   },
 };
 
@@ -69,6 +70,7 @@ export const InlineEditTextAreaSaveOnPressEnter = {
     inputComponent: 'textarea',
     startWithEditViewOpen: true,
     textAreaProps: {
+      // eslint-disable-next-line no-console
       onPressEnter: () => { console.log('onPressEnter'); },
     },
   },

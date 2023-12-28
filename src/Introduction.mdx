@@ -42,7 +42,7 @@ function MyComponent() {
     <InlineEdit
       initialValue="Input shows this on click"
       defaultValue="Input reverts to this on undo"
-      inputMaxLength={100}
+      maxLength={100}
       onSave={handleSave}
       displayRenderer={(value) => (
         <div style={{ fontWeight: 'bold' }}>{value}</div>

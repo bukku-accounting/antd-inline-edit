@@ -34,7 +34,8 @@ function InlineEdit({
   displayRenderer = () => {},
   initialValue = null,
   defaultValue = null,
-  maxLength = globals.DEFAULT_INPUT_MAX_LENGTH,
+  maxLength,
+  // maxLength = globals.DEFAULT_INPUT_MAX_LENGTH,
   inputComponent = 'input', // 'input' | 'textarea'
   startWithEditViewOpen = false,
   displayPlaceholder = globals.DEFAULT_PLACEHOLDER,

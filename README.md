@@ -71,7 +71,7 @@ The Antd Inline Edit component accepts the following props:
 | displayRenderer | Custom render function that is used to display the current value of the component. | Function | `undefined` | `value => <span>{value}</span>` |
 | initialValue | The initial value that is displayed in the component when it is first rendered. | String | `undefined` | `"Hello, world!"` |
 | defaultValue | The default value that is used if the user clicks the "Undo" button. | String | `undefined` | `"John Doe"` |
-| maxLength | The maximum number of characters that can be entered into the input field. | Number | `155` | `50` |
+| maxLength | The maximum number of characters that can be entered into the input field. | Number | `undefined` | `50` |
 | startWithEditViewOpen | whether to start with editable component open | Boolean | `false` | `true` |
 | inputComponent | The editable component rendered (`input` or `textarea`). | String | `input` | `textarea` |
 | textAreaProps | The props passed to the antd `textarea` component. Only valid when inputComponent is `textarea` | Object | `{}` | `{ autoSize: { minRows: 2, maxRows: 6 }}` |
